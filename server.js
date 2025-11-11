@@ -10,10 +10,11 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-    origin: '*',
+    origin: ['*', 'http://localhost:5174', 'http://localhost:5173'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
+
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
@@ -21,7 +22,7 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use(cors({origin: ['*', 'http://localhost:5174', 'http://localhost:5173']}));
+
 app.use(express.json());
 
 
